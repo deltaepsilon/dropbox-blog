@@ -2,15 +2,22 @@
 
 angular.module('dropboxBlogApp', [
   'ngCookies',
-  'ngSanitize'
+  'ngSanitize',
+  'ui.router'
 ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
+  .config(function ($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+      .state('root', {
+        url: '/',
+        views: {
+          body: {
+            templateUrl: 'views/main.html',
+            controller: 'MainCtrl'
+          }
+        }
+
       });
   });
