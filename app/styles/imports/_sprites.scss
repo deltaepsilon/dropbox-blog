@@ -1,0 +1,9 @@
+$sprites:
+  ce-ribbon;
+
+// Sprites
+@each $sprite in $sprites {
+  .background-#{$sprite} {
+    @include use-sprite($sprite);
+  }
+}
